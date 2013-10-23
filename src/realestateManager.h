@@ -7,7 +7,11 @@
 
 #ifndef REALESTATEMANAGER_H_
 #define REALESTATEMANAGER_H_
-#include <string.h>
+
+#include "RealEstateAgent.h"
+#include "Property.h"
+#include "Customer.h"
+
 class realestateManager {
 public:
 	realestateManager();
