@@ -7,7 +7,7 @@
 
 #ifndef REALESTATEMANAGER_H_
 #define REALESTATEMANAGER_H_
-#include <string>
+#include <string.h>
 class realestateManager {
 public:
 	realestateManager();
@@ -38,6 +38,7 @@ private:
 	Property * propertyListingArray[listingsize];
 	Property * archiveRecordsArray[archivesize];
 
+	///TODO l'assignement
 };
 
 #endif /* REALESTATEMANAGER_H_ */
