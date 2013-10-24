@@ -8,12 +8,15 @@
 #include "realestateManager.h"
 
 realestateManager::realestateManager() {
+
 	// TODO Stub du constructeur généré automatiquement
 
 }
 
 realestateManager::~realestateManager() {
-	// TODO !CodeTemplates.destructorstub.tododesc!
+	delete [] agentRecordsArray;
+	delete [] propertyListingArray;
+	delete [] archiveRecordsArray;
 }
 
 bool realestateManager::insertAgent(RealEstateAgent *agent) {
@@ -92,4 +95,42 @@ bool realestateManager::propertysoldrented(Property* property, Customer* custome
 	else cout << "Property wasn't rented." << endl;
 
 	return propertysoldrented;
+}
+
+void realestateManager::findPropertiesCity(string city) {
+
+	for(int i=0; i<listingsize;i++)
+	{
+		if(propertyListingArray[i] != NULL)
+			if(propertyListingArray[i]->getCityname() == city)
+			{
+				HouseRental *tmpHouseRental = dynamic_cast <HouseRental*> (propertyListingArray[i]);
+				if(tmpHouseRental != 0) tmpHouseRental->print();
+
+				HouseSale *tmpHouseSale = dynamic_cast <HouseSale*> (propertyListingArray[i]);
+				if(tmpHouseSale != 0) tmpHouseSale->print();
+
+				LandSale *tmpLandSale = dynamic_cast <LandSale*> (propertyListingArray[i]);
+				if(tmpLandSale != 0) tmpLandSale->print();
+			}
+	}
+}
+
+void realestateManager::findPropertiesAgent(RealEstateAgent* agent) {
+
+	for(int i=0; i<listingsize;i++)
+		{
+			if(propertyListingArray[i] != NULL)
+				if(propertyListingArray[i]->getAgent().getEmployeeid() == agent->getEmployeeid())
+				{
+					HouseRental *tmpHouseRental = dynamic_cast <HouseRental*> (propertyListingArray[i]);
+					if(tmpHouseRental != 0) tmpHouseRental->print();
+
+					HouseSale *tmpHouseSale = dynamic_cast <HouseSale*> (propertyListingArray[i]);
+					if(tmpHouseSale != 0) tmpHouseSale->print();
+
+					LandSale *tmpLandSale = dynamic_cast <LandSale*> (propertyListingArray[i]);
+					if(tmpLandSale != 0) tmpLandSale->print();
+				}
+		}
 }

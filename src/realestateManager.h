@@ -11,6 +11,7 @@
 #include "RealEstateAgent.h"
 #include "Property.h"
 #include "Customer.h"
+#include <typeinfo>
 
 class realestateManager {
 public:
