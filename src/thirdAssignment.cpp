@@ -79,7 +79,15 @@ int main(void) {
 			case '3'://rent or sold a property
 				break;
 			case '4'://find a property in a city
-
+				cout << "Enter the city name :";
+				cin >> cityToFind;
+				for(i=0;i<maxPropertyNumber;i++){
+					if(propertyArray[i]!=NULL){
+						if(propertyArray[i]->getCityname()==cityToFind){
+							propertyArray[i]->print();
+						}
+					}
+				}
 				break;
 			case '5'://find property by agent
 				break;
