@@ -13,18 +13,26 @@
 #include "Date.cpp"
 #include "RealEstateAgent.h"
 #include "RealEstateAgent.cpp"
+#include "HouseRental.h"
+#include "HouseSale.h"
+#include "Property.h"
+#include "LandSale.h"
 using namespace std;
-
+#define maxPropertyNumber 20
 #define maxAgentNumber 20
 int main(void) {
 	int i=0;
 	char choice=' ';
+	char propertySort=' ';
+	string cityToFind;
 	RealEstateAgent ** agentArray= new RealEstateAgent* [maxAgentNumber];//declaring the agent array
-
-	for(i=0;i<maxAgentNumber;i++){//setting the array of agent to null value
+	Property ** propertyArray = new Property* [maxPropertyNumber];//declaring the property array
+	for(i=0;i<maxAgentNumber;i++){//setting the array of agent to null pointer
 		agentArray[i]=NULL;
 	}
-
+	for(i=0;i<maxPropertyNumber;i++){//setting the array of property to null pointer
+		propertyArray[i]=NULL;
+	}
 	cout << "This is the third Assignment" << endl; /* prints This is the third Assignment */
 
 	cout << "1 - Add an agent" << endl;
@@ -41,16 +49,37 @@ int main(void) {
 			case '1'://add an agent
 				for(i=0;i<maxAgentNumber;i++){
 					if(agentArray[i]==NULL){
-						agentArray[i]=new RealEstateAgent();
+						agentArray[i]=new RealEstateAgent;///TODO set the parameter
 						i=maxAgentNumber;
 					}
 				}
 				break;
 			case '2'://add a property
+				cout << "For a LandSale enter L, for a house sale enter H and for a house rental enter h :";
+				do{
+					cin >> propertySort;
+				}while(propertySort!='L' || propertySort!='H' || propertySort!='h');
+				for(i=0;i<maxPropertyNumber;i++){
+					 if(propertyArray[i]==NULL){
+						 switch(propertySort){///TODO set the parameter
+						 case 'L':
+							 propertyArray[i]=new LandSale();
+							 break;
+						 case 'H':
+							 propertyArray[i]=new HouseRental;
+							 break;
+						 case 'h':
+							 propertyArray[i]=new HouseSale;
+							 break;
+						 }
+						 i=maxPropertyNumber;
+					 }
+				}
 				break;
 			case '3'://rent or sold a property
 				break;
 			case '4'://find a property in a city
+
 				break;
 			case '5'://find property by agent
 				break;
