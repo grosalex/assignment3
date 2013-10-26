@@ -8,18 +8,9 @@
  ============================================================================
  */
 
-#include <iostream>
-#include "Date.h"
-#include "Date.cpp"
-#include "RealEstateAgent.h"
-#include "RealEstateAgent.cpp"
-#include "HouseRental.h"
-#include "HouseSale.h"
-#include "Property.h"
-#include "LandSale.h"
+
 #include "realestateManager.h"
-#include "realestateManager.cpp"
-using namespace std;
+
 #define maxPropertyNumber 20
 #define maxAgentNumber 20
 int main(void) {

@@ -6,10 +6,7 @@
  */
 
 #include "realestateManager.h"
-#include "Customer.h"
-#include "Customer.cpp"
-#include "Property.h"
-#include "Property.cpp"
+
 realestateManager::realestateManager() {
 	int i=0;
 	for(i=0;i<max_number_of_agents;i++){
@@ -114,7 +111,8 @@ void realestateManager::findPropertiesCity(string city) {
 		if(propertyListingArray[i] != NULL)
 			if(propertyListingArray[i]->getCityname() == city)
 			{
-				HouseRental *tmpHouseRental = dynamic_cast <HouseRental*> (propertyListingArray[i]);
+				HouseRental *tmpHouseRental = dynamic_cast<HouseRental*>(propertyListingArray[i]);
+
 				if(tmpHouseRental != 0) tmpHouseRental->print();
 
 				HouseSale *tmpHouseSale = dynamic_cast <HouseSale*> (propertyListingArray[i]);

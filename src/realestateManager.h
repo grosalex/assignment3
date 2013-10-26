@@ -8,10 +8,14 @@
 #ifndef REALESTATEMANAGER_H_
 #define REALESTATEMANAGER_H_
 
+#include <typeinfo>
+#include "Person.h"
+#include "Customer.h"
 #include "RealEstateAgent.h"
 #include "Property.h"
-#include "Customer.h"
-#include <typeinfo>
+#include "HouseRental.h"
+#include "HouseSale.h"
+#include "LandSale.h"
 
 class realestateManager {
 public:
