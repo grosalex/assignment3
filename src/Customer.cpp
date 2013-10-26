@@ -19,7 +19,7 @@ Customer::~Customer() {
 
 void Customer::print() {
 	Person::print();
-	cout << "\n Social Insurance Number : " << socialinsurancenumber << endl;
+	cout << "\nSocial Insurance Number : " << socialinsurancenumber;
 }
 
 const string& Customer::getSocialinsurancenumber() const {

@@ -21,7 +21,11 @@ Property::~Property() {
 }
 
 void Property::print() {
-	///TODO print
+	cout << "Adress : " << street_address << ", " << cityname << endl;
+	cout << "Landlord : " << landlord << endl;
+	cout << "Agent : " << agent.getName() << endl;
+	listingdate.print();
+
 }
 
 const RealEstateAgent& Property::getAgent() const {

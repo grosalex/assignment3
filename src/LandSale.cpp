@@ -17,6 +17,12 @@ LandSale::~LandSale(){
 	// TODO !CodeTemplates.destructorstub.tododesc!
 }
 
+void LandSale::print() {
+	Property::print();
+	cout << "\n Area : " << area << endl;
+	cout << "Price : " << price;
+}
+
 double LandSale::getArea() const {
 	return area;
 }

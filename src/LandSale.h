@@ -11,17 +11,17 @@
 class LandSale : public Property{
 
 public:
-LandSale(string, string, Customer, RealEstateAgent, Date, double, int);
-~ LandSale( );
-virtual void print( );
+	LandSale(string, string, Customer, RealEstateAgent, Date, double, int);
+	~ LandSale( );
+	virtual void print( );
 	double getArea() const;
 	void setArea(double area);
 	int getPrice() const;
 	void setPrice(int price);
 
 private:
-double area;
-int price;
+	double area;
+	int price;
 
 };
 

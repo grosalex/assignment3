@@ -21,5 +21,8 @@ HouseRental::~HouseRental() {
 }
 
 void HouseRental::print() {
-	//TODO
+	Property::print();
+	cout << "\nYear of built : " << year_of_built << endl;
+	cout << "Number of rooms : " << no_of_rooms << endl;
+	cout << "Monthly rental  " << monthly_rental;
 }

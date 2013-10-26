@@ -14,6 +14,13 @@ HouseSale::HouseSale(string inStreet, string inCity, Customer inLandLord , RealE
 	price=inPrice;
 }
 
+void HouseSale::print() {
+	Property::print();
+	cout << "\nYear of built : " << year_of_built << endl;
+	cout << "Number of rooms : " << no_of_rooms << endl;
+	cout << "Price : $" << price;
+}
+
 HouseSale::~HouseSale() {
 	// TODO !CodeTemplates.destructorstub.tododesc!
 }
@@ -36,10 +43,6 @@ void HouseSale::setPrice(int price) {
 
 int HouseSale::getYearOfBuilt() const {
 	return year_of_built;
-}
-
-void HouseSale::print() {
-	///TODO faire
 }
 
 void HouseSale::setYearOfBuilt(int yearOfBuilt) {
