@@ -32,6 +32,7 @@ public:
 	void findPropertiesCity(string);
 	// findPropertiesAgent function determines all the listings of an agent and prints them.
 	void findPropertiesAgent(RealEstateAgent *);
+	void controller();
 
 private:
 	static const int max_number_of_agents = 30;

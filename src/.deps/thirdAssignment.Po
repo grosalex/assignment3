@@ -80,7 +80,11 @@ thirdAssignment.o: thirdAssignment.cpp \
  /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../include/c++/4.7.2/bits/ostream.tcc \
  /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../include/c++/4.7.2/istream \
  /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../include/c++/4.7.2/bits/istream.tcc \
- Date.h Date.cpp
+ Date.h Date.cpp RealEstateAgent.h Person.h RealEstateAgent.cpp \
+ HouseRental.h Property.h Customer.h HouseSale.h LandSale.h \
+ realestateManager.h \
+ /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../include/c++/4.7.2/typeinfo \
+ realestateManager.cpp Customer.cpp
 
 /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../include/c++/4.7.2/iostream:
 
@@ -269,3 +273,27 @@ thirdAssignment.o: thirdAssignment.cpp \
 Date.h:
 
 Date.cpp:
+
+RealEstateAgent.h:
+
+Person.h:
+
+RealEstateAgent.cpp:
+
+HouseRental.h:
+
+Property.h:
+
+Customer.h:
+
+HouseSale.h:
+
+LandSale.h:
+
+realestateManager.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../include/c++/4.7.2/typeinfo:
+
+realestateManager.cpp:
+
+Customer.cpp:

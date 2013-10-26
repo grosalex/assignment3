@@ -17,17 +17,21 @@
 #include "HouseSale.h"
 #include "Property.h"
 #include "LandSale.h"
+#include "realestateManager.h"
+#include "realestateManager.cpp"
 using namespace std;
 #define maxPropertyNumber 20
 #define maxAgentNumber 20
 int main(void) {
-	int i=0;
+/*	int i=0;
 	char choice=' ';
 	char propertySort=' ';
 	int agentIdToFind;
 	string cityToFind;
 	RealEstateAgent ** agentArray= new RealEstateAgent* [maxAgentNumber];//declaring the agent array
 	Property ** propertyArray = new Property* [maxPropertyNumber];//declaring the property array
+	///TODO construire manager, init les trois tab a null, fais menu avec realestate manager
+
 	for(i=0;i<maxAgentNumber;i++){//setting the array of agent to null pointer
 		agentArray[i]=NULL;
 	}
@@ -35,7 +39,7 @@ int main(void) {
 		propertyArray[i]=NULL;
 	}
 	cout << "This is the third Assignment" << endl; /* prints This is the third Assignment */
-
+/*
 	cout << "1 - Add an agent" << endl;
 	cout << "2 - Add a property" << endl;
 	cout << "3 - Rent or Sold a Property" << endl;
@@ -119,6 +123,8 @@ int main(void) {
 		}
 
 	}
-
+*/
+	realestateManager myManager;
+	myManager.controller();
 	return 0;
 }
