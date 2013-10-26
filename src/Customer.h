@@ -13,6 +13,7 @@
 class Customer : public Person {
 public:
 	Customer(string inputName, string inputAdress, Date inputBirthdate, string inputSsn);
+	Customer();
 	virtual ~Customer();
 	virtual void print();
 

@@ -14,6 +14,12 @@ RealEstateAgent::RealEstateAgent(string inputName, string inputAdress, Date inpu
 	employeeid = inputEmploeeId;
 }
 
+RealEstateAgent::RealEstateAgent()
+	:Person("", "", Date())
+{
+	employeeid = 0;
+}
+
 RealEstateAgent::~RealEstateAgent() {
 	// TODO Auto-generated destructor stub
 }

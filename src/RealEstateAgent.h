@@ -13,6 +13,7 @@
 class RealEstateAgent : public Person {
 public:
 	RealEstateAgent(string inputName, string inputAdress, Date inputBirthdate, Date inputEmploymentDate, int inputEmploeeId);
+	RealEstateAgent();
 	virtual ~RealEstateAgent();
 
 	int getEmployeeid() const;

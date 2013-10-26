@@ -13,6 +13,12 @@ Customer::Customer(string inputName, string inputAdress, Date inputBirthdate, st
 	socialinsurancenumber = inputSsn;
 }
 
+Customer::Customer()
+	:Person("", "", Date())
+{
+	socialinsurancenumber = "";
+}
+
 Customer::~Customer() {
 	// TODO Auto-generated destructor stub
 }
