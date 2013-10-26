@@ -8,6 +8,8 @@
 #include "realestateManager.h"
 #include "Customer.h"
 #include "Customer.cpp"
+#include "Property.h"
+#include "Property.cpp"
 realestateManager::realestateManager() {
 	int i=0;
 	for(i=0;i<max_number_of_agents;i++){
@@ -265,6 +267,28 @@ void realestateManager::controller() {
 				}
 				break;
 			case '3'://rent or sold a property
+
+				cout << "Enter the customer's name : ";
+				cin >>inputName;
+				cout << "enter the customer's address : ";
+				cin >> inputAdress;
+				cout << "Enter his SSN : ";
+				cin >> inputSSN;
+				cout << "Enther his birthdate (firts day, month year) : " << endl;
+				cin >> inputDay;
+				cin >> inputMonth;
+				cin >> inputYear;
+				inputBirthdate.setDay(inputDay);
+				inputBirthdate.setMonth(inputMonth);
+				inputBirthdate.setYear(inputYear);
+				//Customer * buyer=new Customer(inputName,inputAdress, inputBirthdate,inputSSN);
+				for(i=0;i<this->listingsize;i++){
+					cout << "index : " << i<< " ";
+					this->propertyListingArray[i]->print();
+				}
+				cout << "Wich property you want : ";
+				cin >> i;
+				this->propertysoldrented(this->propertyListingArray[i],new Customer(inputName,inputAdress, inputBirthdate,inputSSN));
 				break;
 			case '4'://find a property in a city
 					cout << "Enter the city name :";
