@@ -24,6 +24,7 @@ int main(void) {
 	int i=0;
 	char choice=' ';
 	char propertySort=' ';
+	int agentIdToFind;
 	string cityToFind;
 	RealEstateAgent ** agentArray= new RealEstateAgent* [maxAgentNumber];//declaring the agent array
 	Property ** propertyArray = new Property* [maxPropertyNumber];//declaring the property array
@@ -90,6 +91,15 @@ int main(void) {
 				}
 				break;
 			case '5'://find property by agent
+				cout << "Enter the agent id to find : ";
+				cin >> agentIdToFind;
+				for(i=0;i<maxPropertyNumber;i++){
+					if(propertyArray[i]!=NULL){
+						if(propertyArray[i]->getAgent().getEmployeeid()==agentIdToFind){
+							propertyArray[i]->print();
+						}
+					}
+				}
 				break;
 			case 'q'://quit
 				return 0;
