@@ -69,7 +69,7 @@ bool realestateManager::propertysoldrented(Property* property, Customer* custome
 	bool propertyfound = false;
 
 
-	property->setCustomer(*customer);
+	if(property!= NULL) property->setCustomer(*customer);
 
 	//Deleting the Property in propertylistingarray
 	for(int i=0; i<listingsize;i++)
@@ -127,20 +127,20 @@ void realestateManager::findPropertiesCity(string city) {
 void realestateManager::findPropertiesAgent(RealEstateAgent* agent) {
 
 	for(int i=0; i<listingsize;i++)
-		{
-			if(propertyListingArray[i] != NULL)
-				if(propertyListingArray[i]->getAgent().getEmployeeid() == agent->getEmployeeid())
-				{
-					HouseRental *tmpHouseRental = dynamic_cast <HouseRental*> (propertyListingArray[i]);
-					if(tmpHouseRental != 0) tmpHouseRental->print();
+	{
+		if(propertyListingArray[i] != NULL)
+			if(propertyListingArray[i]->getAgent().getEmployeeid() == agent->getEmployeeid())
+			{
+				HouseRental *tmpHouseRental = dynamic_cast <HouseRental*> (propertyListingArray[i]);
+				if(tmpHouseRental != 0) tmpHouseRental->print();
 
-					HouseSale *tmpHouseSale = dynamic_cast <HouseSale*> (propertyListingArray[i]);
-					if(tmpHouseSale != 0) tmpHouseSale->print();
+				HouseSale *tmpHouseSale = dynamic_cast <HouseSale*> (propertyListingArray[i]);
+				if(tmpHouseSale != 0) tmpHouseSale->print();
 
-					LandSale *tmpLandSale = dynamic_cast <LandSale*> (propertyListingArray[i]);
-					if(tmpLandSale != 0) tmpLandSale->print();
-				}
-		}
+				LandSale *tmpLandSale = dynamic_cast <LandSale*> (propertyListingArray[i]);
+				if(tmpLandSale != 0) tmpLandSale->print();
+			}
+	}
 }
 
 void realestateManager::controller() {
@@ -163,158 +163,189 @@ void realestateManager::controller() {
 	int inYear;
 	int inRoom;
 	int inPrice;
-	cout << "1 - Add an agent" << endl;
+	/*cout << "1 - Add an agent" << endl;
 	cout << "2 - Add a property" << endl;
 	cout << "3 - Rent or Sold a Property" << endl;
 	cout << "4 - Find properties in a city" << endl;
 	cout << "5 - Find properties by agent" << endl;
 	cout << "q - to quit" << endl;
 
-	cin >> choice;
+	cin >> choice;*/
 	while(choice!='q'){
+
+		cout << "Please enter a correct choice : " << endl;
+		cout << "1 - Add an agent" << endl;
+		cout << "2 - Add a property" << endl;
+		cout << "3 - Rent or Sold a Property" << endl;
+		cout << "4 - Find properties in a city" << endl;
+		cout << "5 - Find properties by agent" << endl;
+		cout << "q - to quit" << endl;
+
+		cin >> choice;
 		switch(choice){
-			case '1'://add an agent
-				cout << "Enter the agent name : ";
-				cin >> inputName;
-				cout << "Enter the adress : ";
-				cin >>inputAdress;
-				cout << "Enther his birthdate (firts day, month year) : " << endl;
-				cin >> inputDay;
-				cin >> inputMonth;
-				cin >> inputYear;
-				inputBirthdate.setDay(inputDay);
-				inputBirthdate.setMonth(inputMonth);
-				inputBirthdate.setYear(inputYear);
-				cout << "Enther his employment date (firts day, month year) : " << endl;
-				cin >> inputDay;
-				cin >> inputMonth;
-				cin >> inputYear;
-				inputEmploymentDate.setDay(inputDay);
-				inputEmploymentDate.setMonth(inputMonth);
-				inputEmploymentDate.setYear(inputYear);
-				cout << "Enter the employee id : ";
-				cin >> inputEmploeeId;
-				validate=this->insertAgent(new RealEstateAgent(inputName, inputAdress, inputBirthdate, inputEmploymentDate,inputEmploeeId));
-				break;
-			case '2'://add a property
-				cout << "For a LandSale enter L, for a house sale enter H and for a house rental enter h :";
-				cin >> propertySort;
-				for(i=0;i<this->listingsize;i++){
-					if(this->propertyListingArray[i]==NULL){
-						for(i=0;i<max_number_of_agents;i++){
-							cout <<"index"<< i;
+		case '1'://add an agent
+			cout << "Enter the agent name : ";
+			cin >> inputName;
+			cout << "Enter the adress : ";
+			cin >>inputAdress;
+			cout << "Enther his birthdate (firts day, month year) : " << endl;
+			cin >> inputDay;
+			cin >> inputMonth;
+			cin >> inputYear;
+			inputBirthdate.setDay(inputDay);
+			inputBirthdate.setMonth(inputMonth);
+			inputBirthdate.setYear(inputYear);
+			cout << "Enther his employment date (firts day, month year) : " << endl;
+			cin >> inputDay;
+			cin >> inputMonth;
+			cin >> inputYear;
+			inputEmploymentDate.setDay(inputDay);
+			inputEmploymentDate.setMonth(inputMonth);
+			inputEmploymentDate.setYear(inputYear);
+			cout << "Enter the employee id : ";
+			cin >> inputEmploeeId;
+			validate=this->insertAgent(new RealEstateAgent(inputName, inputAdress, inputBirthdate, inputEmploymentDate,inputEmploeeId));
+			break;
+		case '2'://add a property
+			cout << "For a LandSale enter L, for a house sale enter H and for a house rental enter h :";
+			cin >> propertySort;
+			for(i=0;i<this->listingsize;i++){
+				if(this->propertyListingArray[i]==NULL){
+					for(i=0;i<max_number_of_agents;i++){
+						if(this->agentRecordsArray[i]!=NULL)
+						{
+							cout <<"index"<< i << endl;
 							this->agentRecordsArray[i]->print();
+							cout << endl;
 						}
+					}
+					do {
 						cout << "Enter the agent's index you want : ";
 						cin >> index;
-						cout << "Enter the address : ";
-						cin >> inStreet_adress;
-						cout << "Enter the city name : ";
-						cin >> inCityName;
-						cout << "Enther the listing date (firts day, month year) : " << endl;
-						cin >> inputDay;
-						cin >> inputMonth;
-						cin >> inputYear;
-						Date inputDate(inputDay,inputMonth,inputYear);
-						cout << "Enter the customer's name : ";
-						cin >>inputName;
-						cout << "enter the customer's address : ";
-						cin >> inputAdress;
-						cout << "Enter his SSN : ";
-						cin >> inputSSN;
-						cout << "Enther his birthdate (firts day, month year) : " << endl;
-						cin >> inputDay;
-						cin >> inputMonth;
-						cin >> inputYear;
-						inputBirthdate.setDay(inputDay);
-						inputBirthdate.setMonth(inputMonth);
-						inputBirthdate.setYear(inputYear);
-						Customer inputCustomer(inputName,inputAdress, inputBirthdate,inputSSN);
-						switch(propertySort){
-						case 'L':
-							cout << "Enter the area : ";
-							cin >> inputArea;
-							cout << "Enter the price : ";
-							cin >> inputPrice;
-							//LandSale * inputLandSale = new LandSale(inStreet_adress, inCityName, inputCustomer, *(this->agentRecordsArray[index]),inputDate,inputArea,inputPrice);
-							this->insertProperty(new LandSale(inStreet_adress, inCityName, inputCustomer, *(this->agentRecordsArray[index]),inputDate,inputArea,inputPrice));
-							break;
-						case 'H':
-							cout << "enter the year of building : ";
-							cin >> inYear;
-							cout << "Enter the number of room : ";
-							cin >> inRoom;
-							cout << "enter the price : ";
-							cin >> inPrice;
-							//Property * inputProperty = new HouseSale(inStreet_adress, inCityName, new Customer(inputName,inputAdress, inputBirthdate,inputSSN),this->agentRecordsArray[index], new Date(inputDay,inputMonth,inputYear), inYear,inRoom,inPrice);
-							this->insertProperty(new HouseSale(inStreet_adress, inCityName, inputCustomer,*(this->agentRecordsArray[index]),inputDate, inYear,inRoom,inPrice));
-							break;
-						case 'h':
-							cout << "enter the year of building : ";
-							cin >> inYear;
-							cout << "Enter the number of room : ";
-							cin >> inRoom;
-							cout << "enter the monthly price : ";
-							cin >> inPrice;
-							//Property * inputProperty = new HouseRental(inStreet_adress, inCityName, new Customer(inputName,inputAdress, inputBirthdate,inputSSN),this->agentRecordsArray[index], new Date(inputDay,inputMonth,inputYear), inYear,inRoom,inPrice);
-							this->insertProperty(new HouseRental(inStreet_adress, inCityName,inputCustomer,*(this->agentRecordsArray[index]),inputDate, inYear,inRoom,inPrice));
-							break;
-						}
+					}while(this->agentRecordsArray[index]==NULL);
 
+					cout << "Enter the address : ";
+					cin >> inStreet_adress;
+					cout << "Enter the city name : ";
+					cin >> inCityName;
+					cout << "Enther the listing date (firts day, month year) : " << endl;
+					cin >> inputDay;
+					cin >> inputMonth;
+					cin >> inputYear;
+					Date inputDate(inputDay,inputMonth,inputYear);
+					cout << "Enter the customer's name : ";
+					cin >>inputName;
+					cout << "enter the customer's address : ";
+					cin >> inputAdress;
+					cout << "Enter his SSN : ";
+					cin >> inputSSN;
+					cout << "Enther his birthdate (firts day, month year) : " << endl;
+					cin >> inputDay;
+					cin >> inputMonth;
+					cin >> inputYear;
+					inputBirthdate.setDay(inputDay);
+					inputBirthdate.setMonth(inputMonth);
+					inputBirthdate.setYear(inputYear);
+					Customer inputCustomer(inputName,inputAdress, inputBirthdate,inputSSN);
+					switch(propertySort){
+					case 'L':
+						cout << "Enter the area : ";
+						cin >> inputArea;
+						cout << "Enter the price : ";
+						cin >> inputPrice;
+						//LandSale * inputLandSale = new LandSale(inStreet_adress, inCityName, inputCustomer, *(this->agentRecordsArray[index]),inputDate,inputArea,inputPrice);
+						this->insertProperty(new LandSale(inStreet_adress, inCityName, inputCustomer, *(this->agentRecordsArray[index]),inputDate,inputArea,inputPrice));
+						break;
+					case 'H':
+						cout << "enter the year of building : ";
+						cin >> inYear;
+						cout << "Enter the number of room : ";
+						cin >> inRoom;
+						cout << "enter the price : ";
+						cin >> inPrice;
+						//Property * inputProperty = new HouseSale(inStreet_adress, inCityName, new Customer(inputName,inputAdress, inputBirthdate,inputSSN),this->agentRecordsArray[index], new Date(inputDay,inputMonth,inputYear), inYear,inRoom,inPrice);
+						this->insertProperty(new HouseSale(inStreet_adress, inCityName, inputCustomer,*(this->agentRecordsArray[index]),inputDate, inYear,inRoom,inPrice));
+						break;
+					case 'h':
+						cout << "enter the year of building : ";
+						cin >> inYear;
+						cout << "Enter the number of room : ";
+						cin >> inRoom;
+						cout << "enter the monthly price : ";
+						cin >> inPrice;
+						//Property * inputProperty = new HouseRental(inStreet_adress, inCityName, new Customer(inputName,inputAdress, inputBirthdate,inputSSN),this->agentRecordsArray[index], new Date(inputDay,inputMonth,inputYear), inYear,inRoom,inPrice);
+						this->insertProperty(new HouseRental(inStreet_adress, inCityName,inputCustomer,*(this->agentRecordsArray[index]),inputDate, inYear,inRoom,inPrice));
+						break;
 					}
-				}
-				break;
-			case '3'://rent or sold a property
 
-				cout << "Enter the customer's name : ";
-				cin >>inputName;
-				cout << "enter the customer's address : ";
-				cin >> inputAdress;
-				cout << "Enter his SSN : ";
-				cin >> inputSSN;
-				cout << "Enther his birthdate (firts day, month year) : " << endl;
-				cin >> inputDay;
-				cin >> inputMonth;
-				cin >> inputYear;
-				inputBirthdate.setDay(inputDay);
-				inputBirthdate.setMonth(inputMonth);
-				inputBirthdate.setYear(inputYear);
-				//Customer * buyer=new Customer(inputName,inputAdress, inputBirthdate,inputSSN);
-				for(i=0;i<this->listingsize;i++){
-					cout << "index : " << i<< " ";
-					this->propertyListingArray[i]->print();
 				}
+				i = listingsize;
+			}
+			break;
+		case '3'://rent or sold a property
+
+			cout << "Enter the customer's name : ";
+			cin >>inputName;
+			cout << "enter the customer's address : ";
+			cin >> inputAdress;
+			cout << "Enter his SSN : ";
+			cin >> inputSSN;
+			cout << "Enther his birthdate (firts day, month year) : " << endl;
+			cin >> inputDay;
+			cin >> inputMonth;
+			cin >> inputYear;
+			inputBirthdate.setDay(inputDay);
+			inputBirthdate.setMonth(inputMonth);
+			inputBirthdate.setYear(inputYear);
+			//Customer * buyer=new Customer(inputName,inputAdress, inputBirthdate,inputSSN);
+			for(i=0;i<this->listingsize;i++){
+				if(this->propertyListingArray[i]!=NULL)
+				{
+					cout <<"index"<< i << endl;
+					this->propertyListingArray[i]->print();
+					cout << endl;
+				}
+			}
+
+			do {
 				cout << "Wich property you want : ";
 				cin >> i;
-				this->propertysoldrented(this->propertyListingArray[i],new Customer(inputName,inputAdress, inputBirthdate,inputSSN));
-				break;
-			case '4'://find a property in a city
-					cout << "Enter the city name :";
-					cin >> findByCity;
-					this->findPropertiesCity(findByCity);
-				break;
-			case '5'://find property by agent
-				for(i=0;i<max_number_of_agents;i++){
-					cout <<"index"<< i;
+			}while(this->propertyListingArray[i]==NULL);
+			this->propertysoldrented(this->propertyListingArray[i],new Customer(inputName,inputAdress, inputBirthdate,inputSSN));
+			break;
+		case '4'://find a property in a city
+			cout << "Enter the city name :";
+			cin >> findByCity;
+			this->findPropertiesCity(findByCity);
+			break;
+		case '5'://find property by agent
+			for(i=0;i<max_number_of_agents;i++){
+				if(this->agentRecordsArray[i]!=NULL)
+				{
+					cout <<"index"<< i << endl;
 					this->agentRecordsArray[i]->print();
+					cout << endl;
 				}
-				cout << "Enter the agent's index you want : ";
-				cin >> i;
-				this->findPropertiesAgent(this->agentRecordsArray[i]);
-				break;
-			case 'q'://quit
-				break;
-			default:
-				cout << "Please enter a correct choice : " << endl;
-				cout << "1 - Add an agent" << endl;
-				cout << "2 - Add a property" << endl;
-				cout << "3 - Rent or Sold a Property" << endl;
-				cout << "4 - Find properties in a city" << endl;
-				cout << "5 - Find properties by agent" << endl;
-				cout << "q - to quit" << endl;
+			}
+			do{
+			cout << "Enter the agent's index you want : ";
+			cin >> i;
+			}while(this->agentRecordsArray[i]==NULL);
+			this->findPropertiesAgent(this->agentRecordsArray[i]);
+			break;
+		case 'q'://quit
+			break;
+		default:
+			cout << "Please enter a correct choice : " << endl;
+			cout << "1 - Add an agent" << endl;
+			cout << "2 - Add a property" << endl;
+			cout << "3 - Rent or Sold a Property" << endl;
+			cout << "4 - Find properties in a city" << endl;
+			cout << "5 - Find properties by agent" << endl;
+			cout << "q - to quit" << endl;
 
-				cin >> choice;
-				break;
+			cin >> choice;
+			break;
 
 		}
 	}
